@@ -43,3 +43,13 @@ $ npm run build:linux
 - refactor Code refactoring (no behavior change)
 - test Adding or updating tests
 - perf Performance improvements
+
+Oraganize my tailwind css
+create a style guide
+keep it consistent
+create logical sections in stylesheet
+Avoid overly-specific selectors
+Break large stylesheets into multiple smaller ones
+for css methodology use OOCSS
+use shorthand rules
+use mobile first media querys
