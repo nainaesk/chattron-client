@@ -16,7 +16,7 @@ function createWindow(): void {
     frame: false,
     vibrancy: 'under-window',
     visualEffectState: 'active',
-    // titleBarStyle: 'hidden',
+    titleBarStyle: 'hiddenInset',
     transparent: true,
     // trafficLightPosition: { x: 15, y: 10 },
     webPreferences: {

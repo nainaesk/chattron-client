@@ -16,7 +16,7 @@ const App = () => {
           <ButtonIcon ButtonIcon={GrGroup} isActive />
           <ButtonIcon ButtonIcon={GoHash} noOfNotifications={3} />
         </TabContainer>
-        <Sidebar className="py-12 px-4">
+        <Sidebar className="flex flex-col py-6 px-2">
           <ChatListPanel />
         </Sidebar>
         <Content>

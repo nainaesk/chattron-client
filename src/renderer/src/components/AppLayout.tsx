@@ -12,7 +12,7 @@ export const RootLayout = ({ children, ...props }: ComponentProps<'main'>) => {
 export const TabContainer = ({ children, className, ...props }: ComponentProps<'aside'>) => {
   return (
     <aside
-      className={twMerge('w-[70px] flex flex-col border-border bg-bg-secondary', className)}
+      className={twMerge('w-[70px] flex flex-col border-r border-border', className)}
       {...props}
     >
       {children}

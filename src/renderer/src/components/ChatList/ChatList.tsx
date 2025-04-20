@@ -1,11 +1,12 @@
+import { ComponentProps } from 'react'
+import { twMerge } from 'tailwind-merge'
 import { ChatListItem } from './ChatListItem'
 
-export const ChatList = () => {
-  const chatList = [1, 2, 3, 4, 5]
+export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
   return (
-    <div className="flex flex-col">
-      {chatList.map((item) => (
-        <ChatListItem key={item} />
+    <div className={twMerge('flex flex-col py-2 overflow-y-auto', className)} {...props}>
+      {Array.from({ length: 60 }).map((_, index) => (
+        <ChatListItem key={index} />
       ))}
     </div>
   )

@@ -3,9 +3,10 @@ import { SearchChatInput } from './SearchChatInput'
 
 export const ChatListPanel = () => {
   return (
-    <div className="flex flex-col">
-      <SearchChatInput />
-      <ChatList />
-    </div>
+    <>
+      <h3 className="mb-4">Messages</h3>
+      <SearchChatInput className="mb-2" />
+      <ChatList className="flex flex-1" />
+    </>
   )
 }

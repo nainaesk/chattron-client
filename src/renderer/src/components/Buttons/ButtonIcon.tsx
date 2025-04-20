@@ -18,7 +18,7 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
     <button
       type="button"
       className={cn(
-        'relative inline-flex items-center p-3 text-sm font-medium text-center text-stone-400 rounded-md focus:ring focus:outline-none hover:bg-stone-700 transition-colors duration-200 ease-in-out hover:text-accent',
+        'relative inline-flex items-center p-3 text-sm font-medium text-center text-stone-400 rounded-md focus:ring focus:outline-none hover:bg-border transition-colors duration-200 ease-in-out hover:text-accent',
         {
           'text-accent': isActive
         }
@@ -30,7 +30,7 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
       <span className="sr-only">Notifications</span>
 
       {noOfNotifications > 0 && (
-        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs text-white bg-accent-alt border border-bg-secondary rounded-full -top-2 -end-2">
+        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs text-white bg-accent-alt border border-border rounded-full -top-2 -end-2">
           {noOfNotifications}
         </div>
       )}
