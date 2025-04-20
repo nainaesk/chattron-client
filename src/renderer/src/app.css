@@ -7,6 +7,8 @@
   --breakpoint-3xl: 1920px;
 
   --color-bg: #fdfcf9;
+  --color-bg-secondary: oklch(0.27 0 0);
+
   --color-text: #1e1e1e;
 
   --color-text-secondary: #5c5c5c;
@@ -18,14 +20,18 @@
 
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --color-border: oklch(87.1% 0.006 286.286);
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 [data-theme='dark'] {
+  /* --color-bg: #1e1e1e;
+   */
   --color-bg: #1e1e1e;
   --color-text: #fdfcf9;
   --color-text-secondary: #a0a0a0;
-  --color-border: #333;
+  --color-border: oklch(37% 0.013 285.805);
+  --color-bg-secondary: oklch(0.27 0 0);
 }
 @layer base {
   #root {

@@ -1,21 +1,23 @@
+import { Content, DraggableTopBar, RootLayout, Sidebar, TabContainer } from '@/components'
+import { FaRegMessage } from 'react-icons/fa6'
+import { GoHash } from 'react-icons/go'
+import { GrGroup } from 'react-icons/gr'
+import { ButtonIcon } from './components/Buttons/ButtonIcon'
+
 const App = () => {
   return (
-    <div className="flex flex-col  gap-2 p-4 bg-bg min-h-screen justify-center items-start">
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h3>Heading 4</h3>
-      <h3>Heading 5</h3>
-      <h3>Heading 6</h3>
-
-      <p className="text-text-secondary">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit voluptatibus
-        explicabo maxime unde animi iure eaque. Mollitia esse minima veniam?
-      </p>
-      <a href="www.google.com">Google.com</a>
-      <button className="btn">Sign up</button>
-      <button className="btn btn-outline">Sign up</button>
-    </div>
+    <>
+      <DraggableTopBar />
+      <RootLayout>
+        <TabContainer className="flex flex-col gap-4 items-center py-12 px-2">
+          <ButtonIcon ButtonIcon={FaRegMessage} />
+          <ButtonIcon ButtonIcon={GrGroup} isActive />
+          <ButtonIcon ButtonIcon={GoHash} noOfNotifications={3} />
+        </TabContainer>
+        <Sidebar></Sidebar>
+        <Content></Content>
+      </RootLayout>
+    </>
   )
 }
 
