@@ -3,6 +3,8 @@ import { FaRegMessage } from 'react-icons/fa6'
 import { GoHash } from 'react-icons/go'
 import { GrGroup } from 'react-icons/gr'
 import { ButtonIcon } from './components/Buttons/ButtonIcon'
+import { ChatListPanel } from './components/ChatList/ChatListPanel'
+import { ChatView } from './components/ChatView/ChatView'
 
 const App = () => {
   return (
@@ -14,8 +16,12 @@ const App = () => {
           <ButtonIcon ButtonIcon={GrGroup} isActive />
           <ButtonIcon ButtonIcon={GoHash} noOfNotifications={3} />
         </TabContainer>
-        <Sidebar></Sidebar>
-        <Content></Content>
+        <Sidebar>
+          <ChatListPanel />
+        </Sidebar>
+        <Content>
+          <ChatView />
+        </Content>
       </RootLayout>
     </>
   )
