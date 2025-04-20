@@ -106,4 +106,7 @@
   .btn.btn-outline {
     @apply bg-transparent border-2 border-accent hover:bg-amber-600 hover:border-transparent  dark:hover:bg-amber-600 dark:hover:border-amber-600;
   }
+  .transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
 }
