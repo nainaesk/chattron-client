@@ -1,40 +1,94 @@
 import PersonImage from '@/assets/person.jpg'
+import { cn } from '@renderer/utils'
+import { ChatListItemStatus } from '@shared/models'
+import { ComponentProps } from 'react'
+import { MdKeyboardArrowDown } from 'react-icons/md'
 
-export const ChatMessage = () => {
+interface ChatMessageProps extends ComponentProps<'div'> {
+  message: string
+  messageTime: string
+  messageStatus: ChatListItemStatus
+  senderName: string
+  senderImage: string
+  isSenderUser: boolean
+}
+
+export const ChatMessage = ({
+  isSenderUser = true,
+  message = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, ullam. ',
+  messageTime = '12:00 PM',
+  ...props
+}: ChatMessageProps) => {
   return (
-    <div className="flex items-start gap-2.5">
-      <img className="w-8 h-8 rounded-full object-cover" src={PersonImage} alt="Jese image" />
+    <div
+      className={cn('flex items-start gap-2.5 group', {
+        'self-end': isSenderUser,
+        'self-start': !isSenderUser,
+        'flex-row-reverse': isSenderUser,
+        'flex-row': !isSenderUser
+      })}
+      {...props}
+    >
+      <img
+        className={cn('w-8 h-8 rounded-full object-cover', {
+          hidden: isSenderUser,
+          block: !isSenderUser
+        })}
+        src={PersonImage}
+        alt="Jese image"
+      />
 
-      <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
-        <div className="flex items-center space-x-2 rtl:space-x-reverse">
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">Bonnie Green</span>
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
-        </div>
-        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
-          That&apos;s awesome. I think our users will really appreciate the improvements.
-        </p>
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
-      </div>
-      <button
-        id="dropdownMenuIconButton"
-        data-dropdown-toggle="dropdownDots"
-        data-dropdown-placement="bottom-start"
-        className="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus:ring-gray-600"
-        type="button"
+      <div
+        className={cn(
+          'flex flex-col w-full max-w-[320px] leading-1.5 p-2 border-gray-200 bg-border',
+          {
+            'rounded-e-xl rounded-es-xl ': !isSenderUser,
+            'rounded-s-xl rounded-ee-xl ': isSenderUser
+          }
+        )}
       >
-        <svg
-          className="w-4 h-4 text-gray-500 dark:text-gray-400"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 4 15"
+        <div
+          className={cn('flex items-center justify-between w-full  relative', {
+            'flex-row-reverse': isSenderUser
+          })}
         >
-          <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-        </svg>
-      </button>
+          <div
+            className={cn('text-sm font-semibold text-gray-900 dark:text-white w-full', {
+              'text-right': isSenderUser,
+              hidden: isSenderUser
+            })}
+          >
+            Bonnie Green
+          </div>
+          <MdKeyboardArrowDown
+            className={cn(
+              'absolute  text-md h-6 w-6 cursor-pointer opacity-0 group-hover:opacity-100 transition rounded-full bg-border/50',
+              {
+                'right-0': !isSenderUser,
+                'left-0 -top-1.5 backdrop-blur-sm': isSenderUser
+              }
+            )}
+          />
+        </div>
+        <p
+          className={cn('text-sm font-normal py-2.5 text-gray-900  dark:text-white mb-0', {
+            'text-right pl-1': isSenderUser
+          })}
+        >
+          {message}
+        </p>
+        <span
+          className={cn('text-xs font-normal  text-gray-500 dark:text-gray-400 -mt-2', {
+            'text-left': isSenderUser,
+            'text-right': !isSenderUser
+          })}
+        >
+          {messageTime}
+        </span>
+      </div>
       <div
         id="dropdownDots"
-        className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-40 dark:bg-gray-700 dark:divide-gray-600"
+        className="z-10 hidden relative bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-40 dark:bg-gray-700 dark:divide-gray-600"
       >
         <ul
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -85,3 +139,4 @@ export const ChatMessage = () => {
     </div>
   )
 }
+// cpy forward delete

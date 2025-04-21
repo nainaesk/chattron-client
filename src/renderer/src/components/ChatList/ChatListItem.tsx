@@ -1,11 +1,10 @@
 import PersonImage from '@/assets/person.jpg'
+import { ChatListItemStatus } from '@shared/models'
 import clsx from 'clsx'
 import { ComponentProps } from 'react'
 import { IoMdCheckmark } from 'react-icons/io'
 import { IoCheckmarkDone } from 'react-icons/io5'
 import { twMerge } from 'tailwind-merge'
-
-export type ChatListItemStatus = 'recieved' | 'sent' | 'delivered' | 'seen'
 
 interface ChatListItemProps extends ComponentProps<'div'> {
   senderName: string // Sender name

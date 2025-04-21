@@ -19,7 +19,7 @@ const App = () => {
         <Sidebar className="flex flex-col py-6 px-2">
           <ChatListPanel />
         </Sidebar>
-        <Content>
+        <Content className="flex flex-col pb-2 px-4">
           <ChatView />
         </Content>
       </RootLayout>

@@ -1,6 +1,7 @@
+import { ChatListItemStatus } from '@shared/models'
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { ChatListItem, ChatListItemStatus } from './ChatListItem'
+import { ChatListItem } from './ChatListItem'
 
 export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
   const chatData: {
@@ -53,7 +54,7 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
     }
   ]
   return (
-    <div className={twMerge('flex flex-col py-2 overflow-y-auto', className)} {...props}>
+    <div className={twMerge('flex flex-col py-2 overflow-y-auto gap-1', className)} {...props}>
       {chatData.map((chat) => (
         <ChatListItem key={chat.senderName} {...chat} />
       ))}

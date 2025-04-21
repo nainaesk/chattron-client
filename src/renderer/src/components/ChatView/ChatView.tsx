@@ -4,10 +4,10 @@ import { ChatMessages } from './ChatMessages'
 
 export const ChatView = () => {
   return (
-    <div className="flex flex-col">
+    <>
       <ChatHeader />
-      <ChatMessages />
+      <ChatMessages className="flex flex-col flex-1" />
       <ChatInput />
-    </div>
+    </>
   )
 }

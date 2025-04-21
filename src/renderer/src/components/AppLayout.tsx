@@ -22,7 +22,7 @@ export const TabContainer = ({ children, className, ...props }: ComponentProps<'
 export const Sidebar = ({ children, className, ...props }: ComponentProps<'aside'>) => {
   return (
     <aside
-      className={twMerge('w-[300px] flex flex-col border-r border-border', className)}
+      className={twMerge('w-[320px] flex flex-col border-r border-border', className)}
       {...props}
     >
       {children}
