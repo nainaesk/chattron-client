@@ -1,10 +1,8 @@
 import { Content, DraggableTopBar, RootLayout, Sidebar, TabContainer } from '@/components'
-import { FaRegMessage } from 'react-icons/fa6'
-import { GoHash } from 'react-icons/go'
-import { GrGroup } from 'react-icons/gr'
-import { ButtonIcon } from './components/Buttons/ButtonIcon'
+
 import { ChatListPanel } from './components/ChatList/ChatListPanel'
 import { ChatView } from './components/ChatView/ChatView'
+import { SideTabs } from './components/SideTabs'
 
 const App = () => {
   return (
@@ -12,9 +10,7 @@ const App = () => {
       <DraggableTopBar />
       <RootLayout>
         <TabContainer className="flex flex-col gap-4 items-center py-12 px-2">
-          <ButtonIcon ButtonIcon={FaRegMessage} />
-          <ButtonIcon ButtonIcon={GrGroup} isActive />
-          <ButtonIcon ButtonIcon={GoHash} noOfNotifications={3} />
+          <SideTabs />
         </TabContainer>
         <Sidebar className="flex flex-col py-6 px-2">
           <ChatListPanel />

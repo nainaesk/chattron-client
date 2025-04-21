@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
+
 export const SearchChatInput = ({ className, ...props }: ComponentProps<'form'>) => {
   return (
     <form className={twMerge('flex items-center w-full px-2', className)} {...props}>

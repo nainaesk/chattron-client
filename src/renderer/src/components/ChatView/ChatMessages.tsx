@@ -1,7 +1,7 @@
+import { ChatMessage } from '@/components'
 import { ChatListItemStatus } from '@shared/models'
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { ChatMessage } from './ChatMessage'
 
 export const ChatMessages = ({ className, ...props }: ComponentProps<'div'>) => {
   const messages: {

@@ -1,5 +1,4 @@
-import { ChatList } from './ChatList'
-import { SearchChatInput } from './SearchChatInput'
+import { ChatList, SearchChatInput } from '@/components'
 
 export const ChatListPanel = () => {
   return (

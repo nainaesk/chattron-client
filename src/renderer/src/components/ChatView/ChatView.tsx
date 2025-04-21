@@ -1,6 +1,4 @@
-import { ChatHeader } from './ChatHeader'
-import { ChatInput } from './ChatInput'
-import { ChatMessages } from './ChatMessages'
+import { ChatHeader, ChatInput, ChatMessages } from '@/components'
 
 export const ChatView = () => {
   return (
