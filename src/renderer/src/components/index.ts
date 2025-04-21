@@ -3,4 +3,4 @@ export * from './Buttons'
 export * from './ChatList'
 export * from './ChatView'
 export * from './DraggableTopBar'
-
+export * from './SideTabs'

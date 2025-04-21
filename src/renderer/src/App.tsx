@@ -1,24 +1,13 @@
-import { Content, DraggableTopBar, RootLayout, Sidebar, TabContainer } from '@/components'
-
-import { ChatListPanel } from './components/ChatList/ChatListPanel'
-import { ChatView } from './components/ChatView/ChatView'
-import { SideTabs } from './components/SideTabs'
+import { DraggableTopBar } from '@/components'
+import { ChatPage, Login } from '@/pages'
 
 const App = () => {
   return (
     <>
       <DraggableTopBar />
-      <RootLayout>
-        <TabContainer className="flex flex-col gap-4 items-center py-12 px-2">
-          <SideTabs />
-        </TabContainer>
-        <Sidebar className="flex flex-col py-6 px-2">
-          <ChatListPanel />
-        </Sidebar>
-        <Content className="flex flex-col pb-2 px-4">
-          <ChatView />
-        </Content>
-      </RootLayout>
+      {/* Based on user logged in oor not i should view either login page or if logged in I should  */}
+      <ChatPage />
+      <Login />
     </>
   )
 }

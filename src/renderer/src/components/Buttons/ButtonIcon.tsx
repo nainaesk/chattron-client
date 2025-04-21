@@ -1,7 +1,7 @@
 import { cn } from '@renderer/utils'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
-interface ButtonIconProps {
+type ButtonIconProps = ComponentProps<'button'> & {
   className?: string
   ButtonIcon: React.ElementType
   noOfNotifications?: number

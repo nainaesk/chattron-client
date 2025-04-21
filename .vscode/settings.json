@@ -1,12 +1,34 @@
+// {
+//   "editor.codeActionsOnSave": {
+//     "source.fixAll.eslint": "always",
+//     "source.organizeImports": "always"
+//   },
+//   "editor.formatOnSave": true,
+//   "editor.defaultFormatter": "esbenp.prettier-vscode",
+//   "editor.wordWrap": "on",
+//   "markdownlint.config" : {
+//     "MD041": false
+//   }
+// }
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always",
-    "source.organizeImports": "always"
+    "source.fixAll.eslint": "always", // Ensures ESLint fixes are applied on save
+    "source.organizeImports": "always" // Automatically organizes imports on save
   },
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.wordWrap": "on",
-  "markdownlint.config" : {
-    "MD041": false
+  "editor.formatOnSave": true, // Enables formatting on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Sets Prettier as the default formatter
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // Prettier for JavaScript
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // Prettier for TypeScript
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // Prettier for JSON
+  },
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"], // Ensure ESLint validates these file types
+  "editor.wordWrap": "on", // Enables word wrapping
+  "markdownlint.config": {
+    "MD041": false // Disables Markdown linting rule MD041
   }
 }
