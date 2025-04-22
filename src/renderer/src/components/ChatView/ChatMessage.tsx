@@ -1,51 +1,41 @@
 import PersonImage from '@/assets/person.jpg'
 import { ChatMessageMenu } from '@/components'
 import { cn } from '@renderer/utils'
-import { ComponentProps, useEffect, useRef, useState } from 'react'
+import {
+  ComponentProps,
+  // useEffect,
+  useRef
+  // useState
+} from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
 type ChatMessageProps = {
+  id: string
+  isMenuOpen: boolean
   message: string
   messageTime: string
   senderName: string
   isSenderUser: boolean
+  onMenuToggle: (id: string) => void
 } & ComponentProps<'div'>
 
 export const ChatMessage = ({
-  senderName = 'User',
-  isSenderUser = true,
-  message = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, ullam. ',
-  messageTime = '12:00 PM',
+  id,
+  isMenuOpen = false,
+  onMenuToggle,
+  senderName,
+  isSenderUser,
+  message,
+  messageTime,
   ...props
 }: ChatMessageProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const arrowRef = useRef<HTMLDivElement>(null)
 
   const handleOpenMenuClick = (event: React.MouseEvent) => {
-    console.log('clicked arrow icon')
     event.stopPropagation()
-    setIsMenuOpen((prev) => !prev)
+    onMenuToggle(id)
   }
-
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (arrowRef.current && arrowRef.current.contains(event.target as Node) && !isMenuOpen) {
-        setIsMenuOpen(true)
-      }
-      if (arrowRef.current && !arrowRef.current.contains(event.target as Node)) {
-        setIsMenuOpen(false)
-      }
-      if (arrowRef.current && arrowRef.current.contains(event.target as Node) && !isMenuOpen) {
-        setIsMenuOpen(false)
-      }
-    }
-    document.addEventListener('click', handleOutsideClick)
-
-    // isMenuOpen true and icon-button is clicked, set isMenuOpen to false
-    // isMenuOpen true and is clicked outside the arrow icon, set isMenuOpen to false
-    // reference is the arrow icon
-  }, [isMenuOpen])
 
   return (
     <div
