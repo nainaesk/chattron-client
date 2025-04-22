@@ -1,7 +1,7 @@
 import PersonImage from '@/assets/person.jpg'
 export const ChatHeader = () => {
   return (
-    <header className="py-4 flex items-center justify-between">
+    <header className=" py-4 flex items-center justify-between bg-bg w-full z-50">
       <div className="flex items-center justify-center gap-2">
         <div className="w-10 h-10 rounded-full bg-gray-200 flex ">
           <img

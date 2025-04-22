@@ -4,7 +4,7 @@ export const ChatInput = () => {
       <label htmlFor="chat" className="sr-only">
         Your message
       </label>
-      <div className="flex items-center px-3 py-2 rounded-lg bg-border">
+      <div className="flex items-center px-3 py-2 rounded-lg bg-border w-full">
         <button
           type="button"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"

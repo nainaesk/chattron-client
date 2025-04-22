@@ -14,6 +14,7 @@ interface ChatMessageProps extends ComponentProps<'div'> {
 }
 
 export const ChatMessage = ({
+  senderName = 'User',
   isSenderUser = true,
   message = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, ullam. ',
   messageTime = '12:00 PM',
@@ -40,7 +41,7 @@ export const ChatMessage = ({
 
       <div
         className={cn(
-          'flex flex-col w-full max-w-[320px] leading-1.5 p-2 border-gray-200 bg-border',
+          'flex flex-col w-full max-w-[320px] leading-1.5 px-3 py-2 border-gray-200 bg-border',
           {
             'rounded-e-xl rounded-es-xl ': !isSenderUser,
             'rounded-s-xl rounded-ee-xl ': isSenderUser
@@ -58,25 +59,54 @@ export const ChatMessage = ({
               hidden: isSenderUser
             })}
           >
-            Bonnie Green
+            {senderName}
           </div>
           <MdKeyboardArrowDown
             className={cn(
-              'absolute  text-md h-6 w-6 cursor-pointer opacity-0 group-hover:opacity-100 transition rounded-full bg-border/50',
+              'absolute  text-md h-6 w-6 cursor-pointer opacity-0 group-hover:opacity-100 transition rounded-full bg-border/50 right-0',
               {
-                'right-0': !isSenderUser,
-                'left-0 -top-1.5 backdrop-blur-sm': isSenderUser
+                '-top-0.5 -right-3': isSenderUser,
+                '-right-2': !isSenderUser
+                // 'left-0 -top-1.5 backdrop-blur-sm': isSenderUser
               }
             )}
           />
+          <div
+            id="dropdownDots"
+            className={cn(
+              'z-10 absolute top-2 left-100% bg-white divide-y divide-gray-100 rounded-lg shadow-sm  dark:bg-gray-700 dark:divide-gray-600 opacity-0',
+              {}
+            )}
+          >
+            <ul
+              className="py-2 text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="dropdownMenuIconButton"
+            >
+              <li>
+                <button className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  Copy
+                </button>
+              </li>
+              <li>
+                <button className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  Forward
+                </button>
+              </li>
+              <li>
+                <button className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p
-          className={cn('text-sm font-normal py-2.5 text-gray-900  dark:text-white mb-0', {
-            'text-right pl-1': isSenderUser
+        <span
+          className={cn('text-sm font-normal pb-2.5 text-gray-900  dark:text-white mb-0', {
+            'pr-1': isSenderUser
           })}
         >
           {message}
-        </p>
+        </span>
         <span
           className={cn('text-xs font-normal  text-gray-500 dark:text-gray-400 -mt-2', {
             'text-left': isSenderUser,
@@ -85,56 +115,6 @@ export const ChatMessage = ({
         >
           {messageTime}
         </span>
-      </div>
-      <div
-        id="dropdownDots"
-        className="z-10 hidden relative bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-40 dark:bg-gray-700 dark:divide-gray-600"
-      >
-        <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownMenuIconButton"
-        >
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Reply
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Forward
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Copy
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Report
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Delete
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
   )
