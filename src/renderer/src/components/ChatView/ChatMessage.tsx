@@ -1,17 +1,15 @@
 import PersonImage from '@/assets/person.jpg'
+import { ChatMessageMenu } from '@/components'
 import { cn } from '@renderer/utils'
-import { ChatListItemStatus } from '@shared/models'
-import { ComponentProps } from 'react'
+import { ComponentProps, useEffect, useRef, useState } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
-interface ChatMessageProps extends ComponentProps<'div'> {
+type ChatMessageProps = {
   message: string
   messageTime: string
-  messageStatus: ChatListItemStatus
   senderName: string
-  senderImage: string
   isSenderUser: boolean
-}
+} & ComponentProps<'div'>
 
 export const ChatMessage = ({
   senderName = 'User',
@@ -20,9 +18,38 @@ export const ChatMessage = ({
   messageTime = '12:00 PM',
   ...props
 }: ChatMessageProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const arrowRef = useRef<HTMLDivElement>(null)
+
+  const handleOpenMenuClick = (event: React.MouseEvent) => {
+    console.log('clicked arrow icon')
+    event.stopPropagation()
+    setIsMenuOpen((prev) => !prev)
+  }
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (arrowRef.current && arrowRef.current.contains(event.target as Node) && !isMenuOpen) {
+        setIsMenuOpen(true)
+      }
+      if (arrowRef.current && !arrowRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+      if (arrowRef.current && arrowRef.current.contains(event.target as Node) && !isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+    document.addEventListener('click', handleOutsideClick)
+
+    // isMenuOpen true and icon-button is clicked, set isMenuOpen to false
+    // isMenuOpen true and is clicked outside the arrow icon, set isMenuOpen to false
+    // reference is the arrow icon
+  }, [isMenuOpen])
+
   return (
     <div
-      className={cn('flex items-start gap-2.5 group', {
+      className={cn('flex items-start gap-1 group', {
         'self-end': isSenderUser,
         'self-start': !isSenderUser,
         'flex-row-reverse': isSenderUser,
@@ -31,7 +58,7 @@ export const ChatMessage = ({
       {...props}
     >
       <img
-        className={cn('w-8 h-8 rounded-full object-cover', {
+        className={cn('w-6 h-6 rounded-full object-cover', {
           hidden: isSenderUser,
           block: !isSenderUser
         })}
@@ -39,6 +66,7 @@ export const ChatMessage = ({
         alt="Jese image"
       />
 
+      {/* Chat bubble */}
       <div
         className={cn(
           'flex flex-col w-full max-w-[320px] leading-1.5 px-3 py-2 border-gray-200 bg-border',
@@ -48,6 +76,7 @@ export const ChatMessage = ({
           }
         )}
       >
+        {/* User name */}
         <div
           className={cn('flex items-center justify-between w-full  relative', {
             'flex-row-reverse': isSenderUser
@@ -61,45 +90,22 @@ export const ChatMessage = ({
           >
             {senderName}
           </div>
-          <MdKeyboardArrowDown
-            className={cn(
-              'absolute  text-md h-6 w-6 cursor-pointer opacity-0 group-hover:opacity-100 transition rounded-full bg-border/50 right-0',
-              {
-                '-top-0.5 -right-3': isSenderUser,
-                '-right-2': !isSenderUser
-                // 'left-0 -top-1.5 backdrop-blur-sm': isSenderUser
-              }
-            )}
-          />
-          <div
-            id="dropdownDots"
-            className={cn(
-              'z-10 absolute top-2 left-100% bg-white divide-y divide-gray-100 rounded-lg shadow-sm  dark:bg-gray-700 dark:divide-gray-600 opacity-0',
-              {}
-            )}
-          >
-            <ul
-              className="py-2 text-sm text-gray-700 dark:text-gray-200"
-              aria-labelledby="dropdownMenuIconButton"
-            >
-              <li>
-                <button className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                  Copy
-                </button>
-              </li>
-              <li>
-                <button className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                  Forward
-                </button>
-              </li>
-              <li>
-                <button className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                  Delete
-                </button>
-              </li>
-            </ul>
+          <div ref={arrowRef} className="relative">
+            <MdKeyboardArrowDown
+              onClick={handleOpenMenuClick}
+              className={cn(
+                'absolute  text-md h-6 w-6 cursor-pointer opacity-0 group-hover:opacity-100 transition rounded-full bg-border/50 right-0',
+                {
+                  '-top-0.5 -right-3': isSenderUser,
+                  '-top-2.5 -right-2': !isSenderUser
+                }
+              )}
+            />
           </div>
+          {/* Dropdown menu */}
+          {isMenuOpen && <ChatMessageMenu ref={menuRef} isOpen={isMenuOpen} />}
         </div>
+        {/* Message content */}
         <span
           className={cn('text-sm font-normal pb-2.5 text-gray-900  dark:text-white mb-0', {
             'pr-1': isSenderUser
@@ -107,6 +113,7 @@ export const ChatMessage = ({
         >
           {message}
         </span>
+        {/* Message recieved time */}
         <span
           className={cn('text-xs font-normal  text-gray-500 dark:text-gray-400 -mt-2', {
             'text-left': isSenderUser,

@@ -7,7 +7,6 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
   const chatData: {
     senderName: string // Sender name
     lastMessageTime: string // Last message time
-    isUnread?: boolean // Indicates if the message is unread
     unreadMessagesCount?: number // Number of new messages
     lastMessagestatus?: ChatListItemStatus // Message status,
     previewMessage: string // Last message preview
@@ -15,7 +14,6 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
     {
       senderName: 'Alice',
       lastMessageTime: '10:30 AM',
-      isUnread: true,
       unreadMessagesCount: 3,
       lastMessagestatus: 'seen',
       previewMessage: 'Hey, are we still on for today?'
@@ -23,7 +21,6 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
     {
       senderName: 'Bob',
       lastMessageTime: '9:15 AM',
-      isUnread: false,
       unreadMessagesCount: 0,
       lastMessagestatus: 'delivered',
       previewMessage: 'Got it, thanks!'
@@ -31,7 +28,6 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
     {
       senderName: 'Charlie',
       lastMessageTime: 'Yesterday',
-      isUnread: true,
       unreadMessagesCount: 1,
       lastMessagestatus: 'sent',
       previewMessage: 'Can you send me the files?'
@@ -39,7 +35,6 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
     {
       senderName: 'Diana',
       lastMessageTime: '2 days ago',
-      isUnread: false,
       unreadMessagesCount: 0,
       lastMessagestatus: 'seen',
       previewMessage: 'Let me know when you’re free.'
@@ -47,7 +42,6 @@ export const ChatList = ({ className, ...props }: ComponentProps<'div'>) => {
     {
       senderName: 'Eve',
       lastMessageTime: '12/03/2025',
-      isUnread: true,
       unreadMessagesCount: 5,
       lastMessagestatus: 'recieved',
       previewMessage: 'Happy Birthday! 🎉'
