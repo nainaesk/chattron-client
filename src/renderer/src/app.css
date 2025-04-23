@@ -102,4 +102,11 @@
   .transition {
     @apply transition-all duration-300 ease-in-out;
   }
+
+  .form-group label {
+    @apply block text-sm font-medium text-text-secondary mb-2;
+  }
+  .form-group input {
+    @apply w-full px-4 py-2 border border-border rounded-lg bg-bg text-text focus:outline-none focus:ring-1 focus:ring-accent-alt transition;
+  }
 }
