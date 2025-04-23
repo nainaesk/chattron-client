@@ -1,9 +1,9 @@
 import { ChatMessage } from '@/components'
-import { ComponentProps, useState } from 'react'
+import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export const ChatMessages = ({ className, ...props }: ComponentProps<'div'>) => {
-  const [openMenuId, setOpenMenuId] = useState<string | null>(null) // Track which menu is open
+  // Track which menu is open
 
   const messages: {
     id: string
@@ -92,27 +92,13 @@ export const ChatMessages = ({ className, ...props }: ComponentProps<'div'>) => 
     }
   ]
 
-  const handleMenuToggle = (id: string) => {
-    setOpenMenuId((prev) => (prev === id ? null : id)) // Toggle the menu
-  }
-
-  const handleOutsideClick = () => {
-    setOpenMenuId(null) // Close the menu when clicking outside
-  }
-
   return (
     <div
       className={twMerge('px-4 flex flex-col gap-4 flex-1 overflow-y-auto', className)}
-      onClick={handleOutsideClick} // Close menu on outside click
       {...props}
     >
       {messages.map((message) => (
-        <ChatMessage
-          key={message.id}
-          isMenuOpen={openMenuId === message.id} // Pass open state
-          onMenuToggle={handleMenuToggle} // Pass toggle handler
-          {...message}
-        />
+        <ChatMessage key={message.id} {...message} />
       ))}
     </div>
   )

@@ -1,5 +1,6 @@
 import PersonImage from '@/assets/person.jpg'
 import { ChatMessageMenu } from '@/components'
+import { useAppStore } from '@renderer/store'
 import { cn } from '@renderer/utils'
 import {
   ComponentProps,
@@ -11,18 +12,14 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 
 type ChatMessageProps = {
   id: string
-  isMenuOpen: boolean
   message: string
   messageTime: string
   senderName: string
   isSenderUser: boolean
-  onMenuToggle: (id: string) => void
 } & ComponentProps<'div'>
 
 export const ChatMessage = ({
   id,
-  isMenuOpen = false,
-  onMenuToggle,
   senderName,
   isSenderUser,
   message,
@@ -32,9 +29,13 @@ export const ChatMessage = ({
   const menuRef = useRef<HTMLDivElement>(null)
   const arrowRef = useRef<HTMLDivElement>(null)
 
+  const openChatBubbleMenuId = useAppStore((state) => state.openChatBubbleMenuId)
+  const setOpenChatBubbleMenuId = useAppStore((state) => state.setOpenChatBubbleMenuId)
+
   const handleOpenMenuClick = (event: React.MouseEvent) => {
     event.stopPropagation()
-    onMenuToggle(id)
+    const newMenuId = openChatBubbleMenuId === id ? null : id
+    setOpenChatBubbleMenuId(newMenuId)
   }
 
   return (
@@ -93,7 +94,7 @@ export const ChatMessage = ({
             />
           </div>
           {/* Dropdown menu */}
-          {isMenuOpen && <ChatMessageMenu ref={menuRef} isOpen={isMenuOpen} />}
+          {openChatBubbleMenuId === id && <ChatMessageMenu ref={menuRef} isOpen />}
         </div>
         {/* Message content */}
         <span

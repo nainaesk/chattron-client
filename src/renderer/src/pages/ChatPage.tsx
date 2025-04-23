@@ -7,9 +7,15 @@ import {
   SideTabs,
   TabContainer
 } from '@/components'
+import { useAppStore } from '@renderer/store'
 export const ChatPage = () => {
+  const setOpenChatBubbleMenuId = useAppStore((state) => state.setOpenChatBubbleMenuId)
+  const handleOutsideClick = () => {
+    setOpenChatBubbleMenuId(null) // Close the menu when clicking outside
+  }
+
   return (
-    <RootLayout>
+    <RootLayout onClick={handleOutsideClick}>
       <TabContainer className="flex flex-col gap-4  py-12 px-2">
         <SideTabs />
       </TabContainer>
