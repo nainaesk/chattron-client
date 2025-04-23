@@ -5,7 +5,8 @@ import { cn } from '@renderer/utils'
 import {
   ComponentProps,
   // useEffect,
-  useRef
+  useRef,
+  useState
   // useState
 } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
@@ -16,6 +17,7 @@ type ChatMessageProps = {
   messageTime: string
   senderName: string
   isSenderUser: boolean
+  containerHeight: number | null
 } & ComponentProps<'div'>
 
 export const ChatMessage = ({
@@ -24,17 +26,38 @@ export const ChatMessage = ({
   isSenderUser,
   message,
   messageTime,
+  containerHeight,
   ...props
 }: ChatMessageProps) => {
   const menuRef = useRef<HTMLDivElement>(null)
   const arrowRef = useRef<HTMLDivElement>(null)
 
-  const openChatBubbleMenuId = useAppStore((state) => state.openChatBubbleMenuId)
-  const setOpenChatBubbleMenuId = useAppStore((state) => state.setOpenChatBubbleMenuId)
-
+  const { openChatBubbleMenuId, setOpenChatBubbleMenuId } = useAppStore((state) => state)
+  const [menuPosition, setMenuPosition] = useState<'top' | 'bottom'>('bottom')
   const handleOpenMenuClick = (event: React.MouseEvent) => {
     event.stopPropagation()
+
     const newMenuId = openChatBubbleMenuId === id ? null : id
+    if (newMenuId) {
+      console.log('newMenuId', newMenuId)
+      console.log('arrowRef', arrowRef.current)
+      console.log('menuRef', menuRef.current)
+      if (arrowRef.current && menuRef.current && containerHeight) {
+        const arrowRect = arrowRef.current.getBoundingClientRect()
+        const menuRect = menuRef.current.getBoundingClientRect()
+        const { top: arrowPositionTop } = arrowRect
+        const { height: menuHeight } = menuRect
+        console.log('arrowPositionTop', arrowPositionTop)
+        console.log('menuHeight', menuHeight)
+        console.log('containerHeight', containerHeight)
+        // Check if the menu is going out of the container
+        if (arrowPositionTop + menuHeight > containerHeight) {
+          setMenuPosition('top')
+        } else {
+          setMenuPosition('bottom')
+        }
+      }
+    }
     setOpenChatBubbleMenuId(newMenuId)
   }
 
@@ -94,12 +117,18 @@ export const ChatMessage = ({
             />
           </div>
           {/* Dropdown menu */}
-          {openChatBubbleMenuId === id && <ChatMessageMenu ref={menuRef} isOpen />}
+
+          <ChatMessageMenu
+            ref={menuRef}
+            isOpen={openChatBubbleMenuId === id}
+            positionY={menuPosition}
+            positionX={isSenderUser ? 'right' : 'left'}
+          />
         </div>
         {/* Message content */}
         <span
           className={cn('text-sm font-normal pb-2.5 text-gray-900  dark:text-white mb-0', {
-            'pr-1': isSenderUser
+            'pr-1 pt-2': isSenderUser
           })}
         >
           {message}
