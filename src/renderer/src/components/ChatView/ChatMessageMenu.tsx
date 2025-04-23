@@ -19,16 +19,18 @@ export const ChatMessageMenu = ({
     <div
       className={cn(
         twMerge(
-          'z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-sm  dark:bg-gray-700 dark:divide-gray-600 opacity-100 transition-all duration-200 right-0',
+          'z-10 absolute bg-gray-200 dark:bg-zinc-800 border-border divide-y divide-gray-100 rounded-lg shadow-sm  transition-all duration-200 right-0 transform ',
           className
         ),
         {
-          'opacity-0 pointer-events-none visibility-hidden': !isOpen, // Hide the menu
-          'opacity-100 pointer-events-auto visibility-visible': isOpen, // Show the menu
+          'opacity-0 pointer-events-none scale-50': !isOpen, // Hide the menu
+          'opacity-100 pointer-events-auto visibility-visible scale-100': isOpen, // Show the menu
           'top-4 -right-0.5': positionY === 'bottom' && positionX === 'right',
           'top-5 ': positionY === 'bottom' && positionX === 'left',
           'bottom-4': positionY === 'top' && positionX === 'left',
-          'bottom-0': positionY === 'top' && positionX === 'right'
+          'bottom-0': positionY === 'top' && positionX === 'right',
+          'origin-top-right': positionY === 'bottom',
+          'origin-bottom-right': positionY === 'top'
         }
       )}
       {...props}
