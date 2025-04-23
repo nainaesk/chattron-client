@@ -16,7 +16,7 @@ export const ChatPage = () => {
 
   return (
     <RootLayout onClick={handleOutsideClick}>
-      <TabContainer className="flex flex-col gap-4  py-12 px-2">
+      <TabContainer className="flex flex-col gap-4 py-12 px-2">
         <SideTabs />
       </TabContainer>
       <Sidebar className="flex flex-col py-6 px-2">

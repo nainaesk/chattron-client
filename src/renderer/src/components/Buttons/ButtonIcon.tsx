@@ -18,7 +18,7 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
     <button
       type="button"
       className={cn(
-        'relative inline-flex items-center p-3 text-sm font-medium text-center text-stone-400 rounded-md focus:ring focus:outline-none hover:bg-border transition-colors duration-200 ease-in-out hover:text-accent',
+        'relative inline-flex justify-center items-center p-3 text-sm font-medium text-center text-stone-400 rounded-md focus:ring focus:outline-none hover:bg-border transition-colors duration-200 ease-in-out hover:text-accent',
         {
           'text-accent': isActive
         }
