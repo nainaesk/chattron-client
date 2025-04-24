@@ -2,7 +2,15 @@ export const Login = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-bg text-text">
       <div className="w-full max-w-md p-8 bg-white dark:bg-zinc-800 rounded-lg shadow-md">
+        {/* Logo */}
+        <div className="flex justify-center mb-6">
+          {/* <img src={logo} alt="Logo" className="h-16 w-auto" /> */}
+        </div>
+
+        {/* Title */}
         <h1 className="text-center text-4xl font-bold mb-6">Login</h1>
+
+        {/* Form */}
         <form className="space-y-6">
           {/* Email Input */}
           <div className="form-group">
@@ -13,7 +21,7 @@ export const Login = () => {
           {/* Password Input */}
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" required />
+            <input type="password" id="password" placeholder="Enter your password" required />
           </div>
 
           {/* Submit Button */}
@@ -25,10 +33,7 @@ export const Login = () => {
         {/* Additional Links */}
         <div className="mt-6 text-center">
           <p className="text-sm text-text-secondary">
-            Don&apos;t have an account?{' '}
-            <a href="/register" className="text-accent underline hover:opacity-80 transition">
-              Register
-            </a>
+            Don&apos;t have an account? <a href="/register">Register</a>
           </p>
         </div>
       </div>
