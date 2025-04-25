@@ -12,11 +12,15 @@ export const createTabSlice: StateCreator<TabSlice> = (set) => ({
 })
 
 export interface ChatSlice {
+  selectedChatId: string | null
+  setSelectedChatId: (id: string | null) => void
   openChatBubbleMenuId: string | null
   setOpenChatBubbleMenuId: (id: string | null) => void
 }
 
 export const createChatSlice: StateCreator<ChatSlice> = (set) => ({
+  selectedChatId: null,
+  setSelectedChatId: (id) => set({ selectedChatId: id }),
   openChatBubbleMenuId: null,
   setOpenChatBubbleMenuId: (id) => set({ openChatBubbleMenuId: id })
 })

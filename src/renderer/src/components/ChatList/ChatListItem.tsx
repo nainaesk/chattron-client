@@ -7,6 +7,7 @@ import { IoCheckmarkDone } from 'react-icons/io5'
 import { twMerge } from 'tailwind-merge'
 
 interface ChatListItemProps extends ComponentProps<'div'> {
+  isActive: boolean
   senderName: string // Sender name
   lastMessageTime: string // Last message time
   unreadMessagesCount?: number // Number of new messages
@@ -15,6 +16,7 @@ interface ChatListItemProps extends ComponentProps<'div'> {
 }
 
 export const ChatListItem = ({
+  isActive = false,
   senderName,
   lastMessageTime,
   className,
@@ -25,9 +27,14 @@ export const ChatListItem = ({
 }: ChatListItemProps) => {
   return (
     <div
-      className={twMerge(
-        'py-2 px-2 flex gap-2 hover:bg-stone-100 cursor-pointer transition-all duration-200 rounded-md ease-in-out dark:hover:bg-border',
-        className
+      className={clsx(
+        twMerge(
+          'py-2 px-2 flex gap-2 hover:bg-stone-100 cursor-pointer transition-all duration-100 rounded-md dark:hover:bg-border',
+          className
+        ),
+        {
+          'bg-stone-100 dark:bg-border': isActive
+        }
       )}
       {...props}
     >
