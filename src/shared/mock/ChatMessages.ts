@@ -1,82 +1,98 @@
 import { ConversationItem } from '@shared/models'
 
-export const ChatMessagesMock: ConversationItem[] = [
-  {
-    id: '1',
-    message: 'Hey, how are you?',
-    messageTime: '10:30AM',
-    senderName: 'Alice',
-    isSenderUser: false
-  },
-  {
-    id: '2',
-    message: 'I’m good, thanks! How about you? I have been thinking about food a lately.',
-    messageTime: '10:32 AM',
-    senderName: 'You',
-    isSenderUser: true
-  },
-  {
-    id: '3',
-    message: 'I’m doing great! Are we still on for today?',
-    messageTime: '10:35 AM',
-    senderName: 'Alice',
-    isSenderUser: false
-  },
-  {
-    id: '4',
-    message: 'Yes, absolutely! Looking forward to it.',
-    messageTime: '10:40 AM',
-    senderName: 'You',
-    isSenderUser: true
-  },
-  {
-    id: '5',
-    message:
-      'Technology has revolutionized the way we communicate, work, and live, enabling faster connections, greater efficiency, and unprecedented access to information across the globe every day.',
-    messageTime: '10:40 AM',
-    senderName: 'You',
-    isSenderUser: true
-  },
-  {
-    id: '6',
-    message: 'That’s so true! Technology has made life so much easier.',
-    messageTime: '10:45 AM',
-    senderName: 'Alice',
-    isSenderUser: false
-  },
-  {
-    id: '7',
-    message: 'Absolutely! By the way, did you finish the project we discussed?',
-    messageTime: '10:50 AM',
-    senderName: 'You',
-    isSenderUser: true
-  },
-  {
-    id: '8',
-    message: 'Yes, I did! I’ll send it to you shortly.',
-    messageTime: '10:55 AM',
-    senderName: 'Alice',
-    isSenderUser: false
-  },
-  {
-    id: '9',
-    message: 'Great! Let me know if you need any feedback.',
-    messageTime: '11:00 AM',
-    senderName: 'You',
-    isSenderUser: true
-  },
-  {
-    id: '10',
-    message: 'Sure thing! Thanks for your help.',
-    messageTime: '11:05 AM',
-    senderName: 'Alice',
-    isSenderUser: false
-  },
-  {
-    id: '11',
-    message: 'Hi',
-    messageTime: '11:05 AM',
-    senderName: 'Alice',
-    isSenderUser: false
-  }
-]
+export const ChatMessagesMock: Record<string, ConversationItem[]> = {
+  jewiweulr: [
+    {
+      id: '1',
+      message: 'Hey, how are you?',
+      messageTime: '10:30 AM',
+      senderName: 'Alice',
+      isSenderUser: false
+    },
+    {
+      id: '2',
+      message: 'I’m good, thanks! How about you?',
+      messageTime: '10:32 AM',
+      senderName: 'You',
+      isSenderUser: true
+    },
+    {
+      id: '3',
+      message: 'I’m doing great! Are we still on for today?',
+      messageTime: '10:35 AM',
+      senderName: 'Alice',
+      isSenderUser: false
+    },
+    {
+      id: '4',
+      message: 'Yes, absolutely! Looking forward to it.',
+      messageTime: '10:40 AM',
+      senderName: 'You',
+      isSenderUser: true
+    }
+  ],
+  bob123: [
+    {
+      id: '1',
+      message: 'Hi Bob, did you get the files?',
+      messageTime: '9:00 AM',
+      senderName: 'You',
+      isSenderUser: true
+    },
+    {
+      id: '2',
+      message: 'Yes, I got them. Thanks!',
+      messageTime: '9:15 AM',
+      senderName: 'Bob',
+      isSenderUser: false
+    }
+  ],
+  charlie456: [
+    {
+      id: '1',
+      message: 'Hey Charlie, can you send me the files?',
+      messageTime: 'Yesterday',
+      senderName: 'You',
+      isSenderUser: true
+    },
+    {
+      id: '2',
+      message: 'Sure, I’ll send them over shortly.',
+      messageTime: 'Yesterday',
+      senderName: 'Charlie',
+      isSenderUser: false
+    }
+  ],
+  diana789: [
+    {
+      id: '1',
+      message: 'Hi Diana, let me know when you’re free.',
+      messageTime: '2 days ago',
+      senderName: 'You',
+      isSenderUser: true
+    },
+    {
+      id: '2',
+      message: 'Will do! Thanks for checking in.',
+      messageTime: '2 days ago',
+      senderName: 'Diana',
+      isSenderUser: false
+    }
+  ],
+  eve101: [
+    {
+      id: '1',
+      message: 'Happy Birthday, Eve! 🎉',
+      messageTime: '12/03/2025',
+      senderName: 'You',
+      isSenderUser: true
+    },
+    {
+      id: '2',
+      message: 'Thank you so much! 😊',
+      messageTime: '12/03/2025',
+      senderName: 'Eve',
+      isSenderUser: false
+    }
+  ]
+}

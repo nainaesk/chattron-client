@@ -2,7 +2,7 @@ import { ChatListItemType } from '@shared/models'
 
 export const chatData: ChatListItemType[] = [
   {
-    id: Math.random() + 'as',
+    id: 'jewiweulr',
     senderName: 'Alice',
     lastMessageTime: '10:30 AM',
     unreadMessagesCount: 3,
@@ -10,7 +10,7 @@ export const chatData: ChatListItemType[] = [
     previewMessage: 'Hey, are we still on for today?'
   },
   {
-    id: Math.random() + 'as',
+    id: 'bob123',
     senderName: 'Bob',
     lastMessageTime: '9:15 AM',
     unreadMessagesCount: 0,
@@ -18,7 +18,7 @@ export const chatData: ChatListItemType[] = [
     previewMessage: 'Got it, thanks!'
   },
   {
-    id: Math.random() + 'as',
+    id: 'charlie456',
     senderName: 'Charlie',
     lastMessageTime: 'Yesterday',
     unreadMessagesCount: 1,
@@ -26,7 +26,7 @@ export const chatData: ChatListItemType[] = [
     previewMessage: 'Can you send me the files?'
   },
   {
-    id: Math.random() + 'as',
+    id: 'diana789',
     senderName: 'Diana',
     lastMessageTime: '2 days ago',
     unreadMessagesCount: 0,
@@ -34,7 +34,7 @@ export const chatData: ChatListItemType[] = [
     previewMessage: 'Let me know when you’re free.'
   },
   {
-    id: Math.random() + 'as',
+    id: 'eve101',
     senderName: 'Eve',
     lastMessageTime: '12/03/2025',
     unreadMessagesCount: 5,

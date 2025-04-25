@@ -1,14 +1,13 @@
-import { ChatMessage } from '@/components'
+import { ChatMessage, LoadingSkeleton } from '@/components'
 import { useAppStore } from '@renderer/store'
-import { ChatMessagesMock } from '@shared/mock/ChatMessages'
-import { ConversationItem } from '@shared/models'
+
 import { ComponentProps, useEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export const ChatMessages = ({ className, ...props }: ComponentProps<'div'>) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const messages: ConversationItem[] = ChatMessagesMock
+  const currentConversation = useAppStore((state) => state.currentConversation)
   const [containerHeight, setContainerHeight] = useState<number | null>(null) // State to store the height
 
   const selectedChatId = useAppStore((state) => state.selectedChatId)
@@ -17,7 +16,6 @@ export const ChatMessages = ({ className, ...props }: ComponentProps<'div'>) => 
     if (containerRef.current) {
       const height = containerRef.current.getBoundingClientRect().height // Get the height
       setContainerHeight(height) // Store the height in state
-      console.log('ChatMessages container height:', height) // Log the height
     }
   }, [])
 
@@ -45,9 +43,13 @@ export const ChatMessages = ({ className, ...props }: ComponentProps<'div'>) => 
       ref={containerRef}
       {...props}
     >
-      {messages.map((message) => (
-        <ChatMessage key={message.id} {...message} containerHeight={containerHeight} />
-      ))}
+      {currentConversation ? (
+        currentConversation.map((message) => (
+          <ChatMessage key={message.id} {...message} containerHeight={containerHeight} />
+        ))
+      ) : (
+        <LoadingSkeleton />
+      )}
     </div>
   )
 }

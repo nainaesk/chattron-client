@@ -51,9 +51,17 @@ export const getConversationByChatListItemId = async (
   chatListItemId: string
 ): Promise<ConversationItem[]> => {
   console.log(chatListItemId)
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(ChatMessagesMock)
-    }, 3234)
+  return new Promise((resolve, reject) => {
+    setTimeout(
+      () => {
+        const conversation = ChatMessagesMock[chatListItemId]
+        if (conversation) {
+          resolve(conversation)
+        } else {
+          reject(new Error('Conversation not found for the given chatListItemId.'))
+        }
+      },
+      Math.floor(Math.random() * 1000)
+    )
   })
 }
