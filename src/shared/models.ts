@@ -1,6 +1,6 @@
 export type ChatListItemStatus = 'recieved' | 'sent' | 'delivered' | 'seen'
 
-export interface ChatListItem {
+export type ChatListItemType = {
   id: string
   senderName: string // Sender name
   lastMessageTime: string // Last message time

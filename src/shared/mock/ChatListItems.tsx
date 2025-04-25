@@ -1,6 +1,6 @@
-import { ChatListItem } from '@shared/models'
+import { ChatListItemType } from '@shared/models'
 
-export const chatData: ChatListItem[] = [
+export const chatData: ChatListItemType[] = [
   {
     id: Math.random() + 'as',
     senderName: 'Alice',

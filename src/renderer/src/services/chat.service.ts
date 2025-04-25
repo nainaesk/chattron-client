@@ -1,6 +1,6 @@
 import { chatData } from '@shared/mock/ChatListItems'
 import { ChatMessagesMock } from '@shared/mock/ChatMessages'
-import { ChatListItem, ConversationItem } from '@shared/models'
+import { ChatListItemType, ConversationItem } from '@shared/models'
 // import axios from 'axios'
 
 // const API_BASE_URL = 'https://your-api-url.com' // Replace with your actual API base URL
@@ -22,11 +22,11 @@ import { ChatListItem, ConversationItem } from '@shared/models'
 // }
 
 // Function to simulate fetching chat list items
-export const getChatListItems = async (): Promise<ChatListItem[]> => {
+export const getChatListItems = async (): Promise<ChatListItemType[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(chatData) // Return mock data after a delay
-    }, 1000) // Simulate 1 second delay
+    }, 5000) // Simulate 1 second delay
   })
 }
 
