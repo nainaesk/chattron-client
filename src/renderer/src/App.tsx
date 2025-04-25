@@ -1,14 +1,30 @@
 import { DraggableTopBar } from '@/components'
-import { Login } from '@/pages'
+import { ChatPage, Login, LoginAction, Register } from '@/pages'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { checkAuthLoader } from './utils/auth'
 
 const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: '',
+      element: <ChatPage />,
+      errorElement: <div>Error</div>,
+      loader: checkAuthLoader
+    },
+    {
+      path: 'login',
+      element: <Login />,
+      action: LoginAction
+    },
+    {
+      path: 'register',
+      element: <Register />
+    }
+  ])
   return (
     <>
       <DraggableTopBar />
-      {/* Based on user logged in oor not i should view either login page or if logged in I should  */}
-      {/* <ChatPage /> */}
-      <Login />
-      {/* <Register /> */}
+      <RouterProvider router={router} />
     </>
   )
 }

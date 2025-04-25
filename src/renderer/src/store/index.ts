@@ -1,8 +1,16 @@
 import { create } from 'zustand'
-import { ChatSlice, createChatSlice, createTabSlice, TabSlice } from './slices'
+import {
+  AuthSlice,
+  ChatSlice,
+  createAuthSlice,
+  createChatSlice,
+  createTabSlice,
+  TabSlice
+} from './slices'
 
-export const useAppStore = create<TabSlice & ChatSlice>((...args) => ({
+export const useAppStore = create<TabSlice & ChatSlice & AuthSlice>((...args) => ({
   ...createTabSlice(...args),
-  ...createChatSlice(...args)
+  ...createChatSlice(...args),
+  ...createAuthSlice(...args)
 }))
 export type AppStore = ReturnType<typeof useAppStore>

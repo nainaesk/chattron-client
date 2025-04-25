@@ -1,4 +1,4 @@
-import { ActiveTab } from '@shared/tabs.models'
+import { ActiveTab } from '@shared/tabs.model'
 import { StateCreator } from 'zustand'
 
 export interface TabSlice {
@@ -19,4 +19,15 @@ export interface ChatSlice {
 export const createChatSlice: StateCreator<ChatSlice> = (set) => ({
   openChatBubbleMenuId: null,
   setOpenChatBubbleMenuId: (id) => set({ openChatBubbleMenuId: id })
+})
+
+export interface AuthSlice {
+  isAuthenticated: boolean
+  setAuthenticated: (isAuthenticated: boolean) => void
+  logout: () => void
+}
+export const createAuthSlice: StateCreator<AuthSlice> = (set) => ({
+  isAuthenticated: false,
+  setAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
+  logout: () => set({ isAuthenticated: false })
 })

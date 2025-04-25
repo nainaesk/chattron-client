@@ -27,7 +27,8 @@ export default defineConfig({
         '@/store': resolve('src/renderer/src/store'),
         '@/components': resolve('src/renderer/src/components'),
         '@/mocks': resolve('src/renderer/src/mocks'),
-        '@/pages': resolve('src/renderer/src/pages')
+        '@/pages': resolve('src/renderer/src/pages'),
+        '@/utils': resolve('src/renderer/src/utils')
       }
     },
     plugins: [react(), tailwindcss()]
